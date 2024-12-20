@@ -1,2 +1,3 @@
-# RL-MPC
- Implementation of value function-augmented MPC
+# Coming soon...
+
+![Alt text](/misc/anim_dip.gif)
