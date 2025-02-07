@@ -2,6 +2,7 @@ videos
 runs
 wandb
 eval_data
+_l4c_generated
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
