@@ -1,0 +1,15 @@
+casadi==3.6.7
+do_mpc==4.6.5
+gymnasium==0.28.1
+ipython==8.12.3
+l4casadi==1.4.1
+matplotlib==3.9.2
+numpy==1.24.4
+pandas==2.2.3
+scipy==1.13.1
+seaborn==0.13.2
+stable_baselines3==2.0.0
+tensorboard==2.18.0
+torch==2.4.0
+tyro==0.5.10
+wandb==0.13.11
