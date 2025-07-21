@@ -19,7 +19,7 @@ sns.set(palette=palette, style='ticks')
 constraint_color = '#66c2a5'
 alpha = 0.25
 
-def get_trajectories(controllers:dict, simulator, estimator, state_init=np.array([0.8, 0.4, 134.14, 130.0]), goal=0.65, num_steps=100):
+def get_trajectories(controllers:dict, simulator, estimator, state_init=np.array([0.8, 0.4, 134.14, 130.0]), goal=0.65, num_steps=100, save_data=True):
 
     simulator_data = {}
 
@@ -52,6 +52,8 @@ def get_trajectories(controllers:dict, simulator, estimator, state_init=np.array
             # do_mpc.tools.printProgressBar(k, num_steps-1, prefix='Closed-loop simulation:', length=50)
 
         simulator_data[key] = copy.deepcopy(simulator.data)
+        if save_data:
+            do_mpc.data.save_results([simulator], result_name=key)
 
     return simulator_data
 
@@ -144,7 +146,7 @@ if __name__ == '__main__':
     state_init = np.array([0.8, 0.3, 100.14, 100.0]) # MPC gets stuck -- run with eval_uncertain_env=True to get situations where both RL and MPC fail but together they succeed
     # state_init = np.array([0.2, 0.3, 120.14, 120.0])
 
-    goal = 0.65
+    goal = 0.6
     n_horizon = 5 # for nstep RL+MPC
     num_steps = 100
 
@@ -177,5 +179,9 @@ if __name__ == '__main__':
                        "nstep": mpc_rlmpc}
 
     sim_data = get_trajectories(controllers, simulator, estimator, state_init=state_init, goal=goal, num_steps=num_steps)
+    # do_mpc.data.save_results([sim_data['rl']], result_name='rl')
+    # do_mpc.data.save_results(sim_data['mpc'], result_name='mpc')
+    # do_mpc.data.save_results(sim_data['nstep'], result_name='nstep')
+
 
     plot_trajectories(sim_data, num_steps=num_steps)

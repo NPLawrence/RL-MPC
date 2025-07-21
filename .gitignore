@@ -3,6 +3,7 @@ runs
 wandb
 eval_data
 _l4c_generated
+results/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
